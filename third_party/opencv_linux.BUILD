@@ -29,13 +29,17 @@ cc_library(
     ],
     linkopts = [
         "-l:libopencv_core.so",
-        "-l:libopencv_calib3d.so",
-        "-l:libopencv_features2d.so",
-        "-l:libopencv_highgui.so",
-        "-l:libopencv_imgcodecs.so",
         "-l:libopencv_imgproc.so",
-        "-l:libopencv_video.so",
-        "-l:libopencv_videoio.so",
+        ## For the examples built, we dont want these linked to opencv
+        # as they are unused and will only bring unwanted depenencies
+        # such as ffmpeg and mysqlclient
+        # Uncomment some of these libs if you need them
+        #"-l:libopencv_calib3d.so",
+        #"-l:libopencv_features2d.so",
+        #"-l:libopencv_highgui.so",
+        #"-l:libopencv_imgcodecs.so",
+        #"-l:libopencv_video.so",
+        #"-l:libopencv_videoio.so",
     ],
     visibility = ["//visibility:public"],
 )
