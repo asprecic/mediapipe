@@ -1,3 +1,22 @@
+# Example how to build Mediapipe as dynamic .so library
+New example is added under mediapipe/examples/desktop/libexample which you can build
+and get .so from it, which you can then integrate into any desktop application you wish.
+
+You can build the example using following:
+
+`bazel build --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/libexample:libexample.so`
+
+Built library will be located under:
+
+`bazel-bin/mediapipe/examples/desktop/libexample/libexample.so`
+
+Header files that go with libexample.so can be found under mediapipe/examples/desktop/libexample/example.h
+
+Unused openCV libraries are disabled under third_party/opencv_linux.BUILD. If you need them, reenable them to get
+them linked in the final binary too.
+
+Remember to copy mediapipe/modules and mediapipe/models to wherever the binary is.
+
 ---
 layout: default
 title: Home
